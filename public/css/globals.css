@@ -1,0 +1,18 @@
+:root {
+    /* Colors */
+
+    --c-light-0: #fff;
+    --c-light-1: #e6e6e6;
+    --c-light-2: #cccccc;
+    --c-light-3: #a3a3a3;
+
+    --c-dark-0: #1c1c1f;
+    --c-dark-1: #161618;
+    --c-dark-2: #121214;
+    --c-dark-3: #0e0e0f;
+}
+
+body {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    background-color: var(--c-light-1);
+}

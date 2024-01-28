@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function() { 
+    return view('pages.home.index'); 
+})->name('home');
+
+/* 
+    Auth routes 
+*/
+
+Route::get('/manage', function() { 
+    return view('pages.manage.index');
 });
+
+
+/* 
+    Login
+*/
+
+Route::post('/login', [
+    LoginController::class, 'store'
+]);
