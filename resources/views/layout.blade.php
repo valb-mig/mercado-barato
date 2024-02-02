@@ -31,7 +31,7 @@
         @yield('styles')
 
     </head>
-    
+
     <body>
         @yield('header')
         <main>
