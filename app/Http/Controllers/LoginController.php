@@ -3,28 +3,35 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Config\Controller;
-use Illuminate\Support\Facades\{Auth, Hash, Validator};
+use Illuminate\Support\Facades\{Auth};
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    public function store(Request $req) 
+    public function index() 
     {
-        $req->validate([
-            'user'  => 'required',
-            'senha' => 'required'
+        return view('auth.login');
+    }
+
+    public function login(Request $req) 
+    {
+        $credenciais = $req->validate([
+            'username' => 'required',
+            'password' => 'required|min:8'
         ],[
-            'user.required'  => 'O campo de usuário é obrigatório',
-            'senha.required' => 'O campo de senha é obrigatório'
+            'username.required' => 'O campo de usuário é obrigatório',
+            'password.required' => 'O campo de senha é obrigatório'
         ]);
 
-        $credentials = $req->only('user', 'senha');
-
-        if(!Auth::attempt(['user_name' => $credentials['user'], 'user_password' => $credentials['senha']]))
+        if(Auth::attempt($credenciais))
         {
-            return redirect()->route('home')->withErrors([
-                'message' => 'invalid'
-            ]);
+            session()->flash('alert', 'Usuário logado!');
+            return redirect()->route('home');
         }
-    }
+        else
+        {
+            session()->flash('alert', 'Credenciais inválidas.');
+            return redirect()->route('login');
+        }
+}
 }

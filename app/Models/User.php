@@ -2,18 +2,22 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Auth\Authenticatable;
 
-class User extends Model
+class User extends Model implements AuthenticatableContract
 {
+    use Authenticatable;
+
     protected $table      = 'mb_sys_users';
-    protected $primaryKey = 'user_id';
+    protected $primaryKey = 'id';
     public    $timestamps = true;
 
     protected $fillable = [
-        'user_name', 
-        'user_email', 
-        'user_image', 
-        'user_password'
+        'username', 
+        'password',
+        'email', 
+        'image'
     ];
 }
