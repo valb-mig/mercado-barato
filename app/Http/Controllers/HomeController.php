@@ -8,8 +8,12 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index() 
+    public function index()
     {
-       return view('pages.home.index');
+        $user = Auth::user();
+
+        return view('pages.home.index',[
+            'user' => $user
+        ]);
     }
 }

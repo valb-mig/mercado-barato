@@ -25,13 +25,13 @@ class LoginController extends Controller
 
         if(Auth::attempt($credenciais))
         {
-            session()->flash('alert', 'Usuário logado!');
+            session()->flash('success', 'Usuário logado!');
             return redirect()->route('home');
         }
         else
         {
-            session()->flash('alert', 'Credenciais inválidas.');
+            session()->flash('danger', 'Usuário inváldo!');
             return redirect()->route('login');
         }
-}
+    }
 }
