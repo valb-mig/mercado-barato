@@ -21,11 +21,11 @@
         <!-- Jquery -->
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-          <!-- jQuery Mask Plugin -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
-
         <!-- Golbal Style -->
         <link rel="stylesheet" href="{{ asset('css/globals.css') }}">
+
+        <!-- jQuery Mask Plugin -->
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 
         <!-- Styles -->
         @yield('styles')
@@ -35,6 +35,8 @@
     <body>
         @yield('header')
         <main>
+            @include('components.alert-area')
+
             @yield('sidebar')
             @yield('content')
         </main>
@@ -43,4 +45,7 @@
 
     <!-- Scripts -->
     @yield('scripts')
+
+    <!-- Golbal Javasctipt -->
+    <script src="/js/globals.js"></script>
 </html>

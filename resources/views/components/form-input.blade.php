@@ -14,7 +14,7 @@
     }
 @endphp
 
-<div class="input-group mb-3">
+<div class="input-group">
     <div class="input-group-prepend">
         @if (isset($icon))
             <span 
@@ -36,3 +36,9 @@
         aria-label="{{ $id }}" 
         aria-describedby="basic-addon">
 </div>
+
+@error($id)
+    <span class="text-danger small">
+        {{ $message }}
+    </span>
+@enderror

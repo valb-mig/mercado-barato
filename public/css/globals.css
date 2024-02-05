@@ -17,7 +17,19 @@ body {
     background-color: var(--c-light-1);
 }
 
+.alert-area {
+
+    top: 0;
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    padding: 10px;
+    z-index: 999;
+    gap: 5px;
+}
+
 .input-icon {
+
     display: flex;
     width: 100%;
     height: 100%;
