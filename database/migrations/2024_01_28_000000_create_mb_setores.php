@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mb_sys_users', function (Blueprint $table) {
+        Schema::create('mb_setores', function (Blueprint $table) {
             $table->id('id');
-            $table->string('username');
-            $table->text('image');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->enum('grupo', [0, 1])->default(0); // 0 = Adm, 1 = Gestor
-            $table->rememberToken();
+            $table->string('setor_nome');
+            $table->integer('setor_gestor');
             $table->timestamps();
         });
     }
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mb_sys_users');
+        Schema::dropIfExists('mb_setores');
     }
 };
