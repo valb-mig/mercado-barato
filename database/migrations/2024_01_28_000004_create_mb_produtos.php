@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('mb_produtos', function (Blueprint $table) {
             $table->id('id');
             $table->integer('id_lote');
-            $table->integer('id_setor');
+            $table->unsignedBigInteger('id_setor');
+            $table->foreign('id_setor')->references('id')->on('mb_setores');
             $table->string('produto_nome');
             $table->float('produto_preco', 8, 2);
             $table->integer('produto_desconto')->default(0);
