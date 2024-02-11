@@ -1,9 +1,9 @@
 @extends('layout')
 @section('title', 'Mercado Barato - Register')
 
-@section('styles')
+@push('styles')
     <link rel="stylesheet" href="{{ asset('css/auth/register.css') }}">
-@endsection
+@endpush
 
 @section('content')
     <section class="d-flex gap-3 flex-column w-100">

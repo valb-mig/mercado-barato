@@ -1,10 +1,12 @@
 :root {
     /* Colors */
 
-    --c-light-0: #fff;
-    --c-light-1: #e6e6e6;
-    --c-light-2: #cccccc;
-    --c-light-3: #a3a3a3;
+    --c-light-0: #FFFFFF;
+    --c-light-1: #F5F5F5;
+    --c-light-2: #DDDDDD;
+    --c-light-3: #C2C2C2;
+
+    --d-dark-bg: #17171C;
 
     --c-dark-0: #1c1c1f;
     --c-dark-1: #161618;

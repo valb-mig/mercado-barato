@@ -1,19 +1,22 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/components/layout/header.css') }}">
+@endpush
+
+<nav class="p-2 d-flex gap-2 align-items-center border-b-2 border-light-1 mb-2">
+    <div class="d-flex w-100 justify-content-between">
         <a class="navbar-brand" href="#">Mercado Barato</a>
+    </div>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <div class="d-flex gap-2 align-items-center">
+        <span class="btn btn-default">
+            <i class="fa fa-bell"></i>
+        </span>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                @foreach ($items as $name => $path)
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{$path}}">{{$name}}</a>
-                    </li>
-                @endforeach
-            </ul>
+        <div class="d-flex align-items-center p-2">
+            {{$user->username}}
+            <span class="d-flex align-items-center justify-content-center">
+                <i class="fa fa-user"></i>
+            </span>
         </div>
     </div>
 </nav>

@@ -21,5 +21,6 @@
     @endforeach
 </div>
 
-<!-- Alerts Javasctipt -->
-<script src="/js/components/alert.js"></script>
+@push('scripts')
+    <script src="/js/components/alert.js"></script>
+@endpush

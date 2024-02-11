@@ -1,0 +1,29 @@
+.site-header {
+    background-color: var(--c-light-1);
+    border-bottom: 1px solid var(--c-light-2);
+}
+
+.user-name-tag {
+
+    border-radius: 20px;
+    padding: 4px 4px 4px 8px;
+    background-color: var(--c-light-2);
+}
+
+.user-icon {
+
+    width:  30px;
+    height: 30px;
+    border-radius: 100%;
+    background-color: var(--c-light-3);
+    color: var(--c-light-2);
+}
+
+.header-button {
+
+    width:  40px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: var(--c-light-2);
+    color: var(--c-light-1);
+}

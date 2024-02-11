@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        @vite('resources/css/app.css')
+
         <title>@yield('title')</title>
 
         <!-- Icon -->
@@ -25,14 +27,14 @@
         <link rel="stylesheet" href="{{ asset('css/globals.css') }}">
 
         <!-- jQuery Mask Plugin -->
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 
         <!-- Styles -->
-        @yield('styles')
+        @stack('styles')
 
     </head>
 
-    <body>
+    <body class="bg-light-0">
         @yield('header')
         <main>
             @include('components.alert-area')
@@ -43,9 +45,10 @@
         @yield('footer')
     </body>
 
-    <!-- Scripts -->
-    @yield('scripts')
-
     <!-- Golbal Javasctipt -->
     <script src="/js/globals.js"></script>
+
+    <!-- Scripts -->
+    @stack('scripts')
+    
 </html>

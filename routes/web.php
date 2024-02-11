@@ -1,29 +1,21 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\Auth\AuthController;
-
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\{Auth, Route};
+use App\Http\Controllers\Auth\Login\LoginController;
+use App\Http\Controllers\Auth\Register\RegisterController;
+use App\Http\Controllers\Pages\Home\HomeController;
 
 /*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
+*  Root redirect
 */
 
-Route::get('/', [ 
-    AuthController::class, 'index'
-])->name('index');
+Route::get('/', function(){
+    return Auth::check() ? redirect()->route('home') : redirect()->route('login');
+});
 
-// Home
+/*
+*  Home
+*/
 
 Route::middleware('auth.check')->group(function () {
 
@@ -33,7 +25,9 @@ Route::middleware('auth.check')->group(function () {
     
 });
 
-// Login
+/*
+*  Login
+*/
 
 Route::get('/user/login', [
     LoginController::class, 'index'
@@ -43,7 +37,9 @@ Route::post('/user/login', [
     LoginController::class, 'login'
 ]);
 
-// Register
+/*
+*  Register
+*/
 
 Route::get('/user/register', [
     RegisterController::class, 'index'
