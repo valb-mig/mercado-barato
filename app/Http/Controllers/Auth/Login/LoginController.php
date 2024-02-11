@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth\Login;
 
 use App\Http\Controllers\Config\Controller;
-use Illuminate\Support\Facades\{Auth};
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller

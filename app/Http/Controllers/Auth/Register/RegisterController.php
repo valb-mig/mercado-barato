@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth\Register;
 
 use App\Models\User;
 use App\Http\Controllers\Config\Controller;
@@ -30,7 +30,10 @@ class RegisterController extends Controller
 
         if($req->user_password == $req->user_password_conf)
         {
-            if(!User::where('username', $req->username)->first())
+            $checkUser = User::where('username','=',$req->username)
+                               ->orWhere('email',$req->email)
+                               ->count() > 0 ? true : false;
+            if(!$checkUser)
             {
                 $user = new User();
 
@@ -44,18 +47,18 @@ class RegisterController extends Controller
                 
                 $user->save(); 
 
-                session()->flash('alert', 'Usuário cadastrado!');
-                return redirect()->route('home');
+                session()->flash('success', "Usuário, $user->username cadastrado!");
+                return redirect()->route('login');
             }
             else
             {
-                session()->flash('alert', 'Usuário já existe');
+                session()->flash('warning', 'Usuário já existe');
                 return redirect()->route('register');
             }
         }
         else
         {
-            session()->flash('alert', 'As senhas não coicidem');
+            session()->flash('danger', 'As senhas não coicidem');
             return redirect()->route('register');
         }
     }
