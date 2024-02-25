@@ -1,9 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\{Auth, Route};
-use App\Http\Controllers\Auth\Login\LoginController;
-use App\Http\Controllers\Auth\Register\RegisterController;
-use App\Http\Controllers\Pages\Home\HomeController;
+
+use App\Http\Controllers\Pages\Auth\{
+    Login\LoginController,
+    Register\RegisterController
+};
+
+use App\Http\Controllers\Pages\{
+    Home\HomeController,
+    Setor\SetorController,
+    Produto\ProdutoController
+};
 
 /*
 *  Root redirect
@@ -13,16 +21,27 @@ Route::get('/', function(){
     return Auth::check() ? redirect()->route('home') : redirect()->route('login');
 });
 
-/*
-*  Home
-*/
-
 Route::middleware('auth.check')->group(function () {
+
+    /*
+    *  Home
+    */
 
     Route::get('/home', [ 
         HomeController::class, 'index'
     ])->name('home');
     
+    /*
+    *  Setor
+    */
+
+    Route::get('/setor/{id?}', [ 
+        SetorController::class, 'index'
+    ])->name('setor');
+
+    Route::post('/setor/{id?}/add', [ 
+        ProdutoController::class, 'add'
+    ]);
 });
 
 /*

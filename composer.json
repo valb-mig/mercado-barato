@@ -10,10 +10,15 @@
         "blade-ui-kit/blade-icons": "^1.6",
         "blade-ui-kit/blade-ui-kit": "^0.4.0",
         "codeat3/blade-carbon-icons": "^2.18",
+        "codeat3/blade-google-material-design-icons": "^1.18",
+        "codeat3/blade-phosphor-icons": "^2.0",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
-        "laravel/tinker": "^2.8"
+        "laravel/tinker": "^2.8",
+        "livewire/livewire": "^3.4",
+        "mallardduck/blade-boxicons": "^2.4",
+        "mkocansey/bladewind": "^2.4"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -66,5 +71,8 @@
         }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "files":[
+        "app/Helpers/Helper.php"
+    ]
 }

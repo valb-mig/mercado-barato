@@ -20,9 +20,10 @@ export default {
           '2': '#121214',
           '3': '#0e0e0f',
         },
-        red: {
-          '0': '#ff1c1f',
-        }
+        red: '#F3505A'
+      },
+      justifyContent: {
+        'between': 'justify-content-between',
       },
     },
   },

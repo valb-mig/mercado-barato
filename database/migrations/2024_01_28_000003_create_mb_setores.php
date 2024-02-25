@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id('id');
             $table->string('setor_nome');
             $table->integer('setor_gestor');
+            $table->string('setor_icone');
+            $table->integer('setor_capacidade');
             $table->timestamps();
         });
     }
