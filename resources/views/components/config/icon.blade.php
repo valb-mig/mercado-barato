@@ -18,7 +18,10 @@
         'lock-closed' => 'heroicon-s-lock-closed',
         'lock-open'   => 'heroicon-s-lock-open',
         'at'          => 'heroicon-c-at-symbol',
-        'money'       => 'bx-money'
+        'money'       => 'bx-money',
+        'trash'       => 'heroicon-s-trash',
+        'pencil'      => 'heroicon-s-pencil',
+        'camera'      => 'heroicon-s-camera'
     ];
 @endphp
 

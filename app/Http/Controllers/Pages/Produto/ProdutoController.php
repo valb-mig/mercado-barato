@@ -15,13 +15,17 @@ class ProdutoController extends Controller
 
     public function add(Request $req, $id)
     {
-        $credenciais = $req->validate([
+        $req->validate([
+            'foto'       => 'required|file|max:10240|mimes:jpeg,png,jpg',
             'nome'       => 'required',
             'quantidade' => 'required',
             'validade'   => 'required',
             'lote'       => 'required',
             'preco'      => 'required'
         ],[
+            'foto.required'          => 'O campo de foto é obrigatório',
+            'foto.max'               => 'Arquivo com tamanho alem do limite (10mb)',
+            'foto.file'              => 'Tipo do arquivo não permitido (jpeg,png,jpg)',
             'nome.required'       => 'O campo de nome é obrigatório',
             'quantidade.required' => 'O campo de quantidade é obrigatório',
             'validade.required'   => 'O campo de validade é obrigatório',
@@ -29,21 +33,29 @@ class ProdutoController extends Controller
             'lote.required'       => 'O campo de lote é obrigatório'
         ]);
 
+        $produto = $this->createProduto($id, $req);
+
+        return redirect()->route('setor', ['id' => $id]);
+    }
+
+    private function createProduto(int $id, object $req):object
+    {
         $produto = new Produtos;
 
         $produto->id_setor         = $id;
-        $produto->id_lote          = $credenciais['lote'];
-        $produto->produto_nome     = $credenciais['nome'];
-        $produto->produto_preco    = floatval(str_replace('R$','', str_replace('.','', str_replace(',','.', $credenciais['preco']))));
+        $produto->id_lote          = $req->input('lote');
+        $produto->produto_nome     = $req->input('nome');
+        $produto->produto_preco    = floatval(str_replace('R$','', str_replace('.','', str_replace(',','.', $req->input('preco')))));
+        $produto->produto_base64   = 'data:image/png;base64,'.base64_encode(file_get_contents($req->file('foto')->getPathname()));
         $produto->produto_desconto = 0;
-        $produto->produto_qtd      = $credenciais['quantidade'];
-        $produto->produto_validade = Carbon::createFromFormat('d/m/Y', $credenciais['validade'])->format('Y-m-d');
+        $produto->produto_qtd      = $req->input('quantidade');
+        $produto->produto_validade = Carbon::createFromFormat('d/m/Y', $req->input('validade'))->format('Y-m-d');
 
         $produto->updated_at = now();
         $produto->created_at = now();
 
         $produto->save();
 
-        return redirect()->route('setor', ['id' => $id]);
+        return $produto;
     }
 }

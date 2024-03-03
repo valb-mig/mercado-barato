@@ -26,11 +26,13 @@
                 placeholder="Senha"
             />
             <hr>
+
             <div class="d-flex w-100 justify-content-between">
+
                 <div class="d-flex align-items-center gap-2">
-                    <x-checkbox name="remember_me"/>
-                    Lembre-se de mim
+                    <x-checkbox name="remember_me"/>Lembre-se de mim
                 </div>
+
                 <div>
                     <a href="/user/register" class="btn btn-default">Registre-se</a>
                     <button type="submit" class="btn btn-success">Login</button>

@@ -10,7 +10,8 @@ use App\Http\Controllers\Pages\Auth\{
 use App\Http\Controllers\Pages\{
     Home\HomeController,
     Setor\SetorController,
-    Produto\ProdutoController
+    Produto\ProdutoController,
+    User\UsuarioController
 };
 
 /*
@@ -31,6 +32,14 @@ Route::middleware('auth.check')->group(function () {
         HomeController::class, 'index'
     ])->name('home');
     
+    /*
+    *  Usuário
+    */
+
+    Route::get('/user/profile/{id}', [ 
+        UsuarioController::class, 'index'
+    ])->name('user-profile');
+
     /*
     *  Setor
     */

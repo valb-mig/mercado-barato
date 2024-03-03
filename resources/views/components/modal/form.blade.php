@@ -11,11 +11,11 @@
                     ])
                     {{$title}}
                 </span>
-                <button class="btn btn-default" onclick="$('#modal_add').fadeToggle()">
+                <button class="btn btn-default" onclick="$('#modal_add').fadeOut()">
                     <i class="fa fa-times"></i>
                 </button>
             </div>
-            <form action="{{$action}}" method="post" class="d-flex flex-column gap-2 p-2">
+            <form action="{{$action}}" method="post" class="d-flex flex-column gap-2 p-2" enctype="multipart/form-data">
                 @csrf
                 <div id="modal_body" class="d-flex flex-column gap-2">
                     {{$slot}}

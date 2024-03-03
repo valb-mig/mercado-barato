@@ -1,0 +1,31 @@
+.custom-pagination {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.custom-pagination a,
+.custom-pagination span {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 0 4px;
+    color: #333;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.custom-pagination a:hover,
+.custom-pagination span:hover {
+    background-color: #F5F5F5;
+}
+
+.custom-pagination .active {
+    color: #FFFFFF;
+}
+
+.custom-pagination .active span {
+    color: #FFFFFF;
+    background-color: #5075D2;
+}

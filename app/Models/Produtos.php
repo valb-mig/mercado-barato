@@ -19,6 +19,7 @@ class Produtos extends Model
         'produto_nome',
         'produto_preco',
         'produto_desconto',
+        'produto_base64',
         'produto_qtd',
         'produto_validade'
     ];

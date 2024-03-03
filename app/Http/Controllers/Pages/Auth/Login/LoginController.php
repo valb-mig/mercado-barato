@@ -22,8 +22,8 @@ class LoginController extends Controller
             'username.required' => 'O campo de usuário é obrigatório',
             'password.required' => 'O campo de senha é obrigatório'
         ]);
-        
-        if(Auth::attempt($credenciais))
+    
+        if(Auth::attempt($credenciais, $req->remember_me))
         {
             session()->flash('success', 'Usuário logado!');
             return redirect()->route('home');

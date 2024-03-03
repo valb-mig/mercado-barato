@@ -9,6 +9,15 @@
     <section class="d-flex gap-3 flex-column w-100">
         <h1 class="d-flex justify-content-center">Registre-se</h1>
         <x-form.body action="/user/register">
+
+            <x-form.input 
+                id="foto" 
+                label="Foto" 
+                type="file" 
+                icon="camera" 
+                placeholder="Foto do usuário (jpeg,png,jpg)"
+            />
+
             <x-form.input 
                 id="username" 
                 label="Usuário" 
@@ -36,7 +45,7 @@
 
             <x-form.input 
                 label="Confirmar senha" 
-                name="password"
+                name="password_conf"
                 type="password" 
                 icon="lock-closed" 
                 id="password_conf" 

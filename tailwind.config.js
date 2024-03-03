@@ -20,7 +20,18 @@ export default {
           '2': '#121214',
           '3': '#0e0e0f',
         },
-        red: '#F3505A'
+        red: {
+          '0': '#F3505A',
+          '1': '#DF485C'
+        },
+        blue: {
+          '0': '#5075D2',
+          '1': '#506ACB'
+        },
+        green: {
+          '0': '#6CC066',
+          '1': '#61B668'
+        }
       },
       justifyContent: {
         'between': 'justify-content-between',

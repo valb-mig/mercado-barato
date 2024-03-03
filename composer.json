@@ -9,6 +9,7 @@
         "blade-ui-kit/blade-heroicons": "^2.3",
         "blade-ui-kit/blade-icons": "^1.6",
         "blade-ui-kit/blade-ui-kit": "^0.4.0",
+        "blade-ui-kit/blade-zondicons": "^1.5",
         "codeat3/blade-carbon-icons": "^2.18",
         "codeat3/blade-google-material-design-icons": "^1.18",
         "codeat3/blade-phosphor-icons": "^2.0",
@@ -73,6 +74,7 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "files":[
-        "app/Helpers/Helper.php"
+        "app/Helpers/GlobalHelper.php",
+        "app/Helpers/UserHelper.php"
     ]
 }

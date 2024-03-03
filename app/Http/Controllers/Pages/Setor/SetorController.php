@@ -28,8 +28,7 @@ class SetorController extends Controller
 
         return view('pages.setor.index',[
             'setor'    => $setor,
-            'produtos' => $produtos,
-            'lista'    => SetorHelper::getTableListSetor($produtos)
+            'produtos' => $produtos
         ]);
     }
 }

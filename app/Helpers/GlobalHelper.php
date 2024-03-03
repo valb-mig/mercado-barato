@@ -2,7 +2,7 @@
 
 namespace App\Helpers;
 
-class Helper
+class GlobalHelper
 {
     public static function getTimeGreetings() 
     {

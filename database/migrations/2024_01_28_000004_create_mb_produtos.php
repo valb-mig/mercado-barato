@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreign('id_setor')->references('id')->on('mb_setores');
             $table->string('produto_nome');
             $table->float('produto_preco', 8, 2);
+            $table->longText('produto_base64');
             $table->integer('produto_desconto')->default(0);
             $table->integer('produto_qtd')->default(0);
             $table->dateTime('produto_validade');
