@@ -37,7 +37,7 @@
 <button 
     id="{{$id}}" 
     onclick="{{$onclick}}" 
-    class="d-flex justify-content-center align-items-center rounded transition-all bg-light-0 border-light-1 {{$styleType}} {{$styleClass}}"
+    class="flex justify-center items-center rounded transition-all bg-light-0 border-light-1 {{$styleType}} {{$styleClass}}"
 >
     {{$slot}}
 </button>

@@ -8,12 +8,21 @@
         <a class="navbar-brand" href="/home">Mercado Barato</a>
     </div>
 
-    <div class="d-flex gap-2 align-items-center">
-        <a href="/user/profile/{{$user->id}}" class="text-dark-0 no-underline d-flex align-items-center gap-1 pl-2 bg-light-1 border-1 border-light-2 rounded">
-            {{$user->username}}
-            <span class="d-flex align-items-center justify-content-center rounded p-1 bg-light-2 text-light-0">
-                <img src="{{$image->arquivo_base64}}" width="40px" />
+    <div class="flex gap-2 align-items-center">
+
+        <div>
+            @include('components.config.icon', [
+                'icon'  => 'bell',
+                'width' => '1em'
+            ])
+        </div>
+
+        <a href="/user/profile/{{$user->id}}" class="flex items-center text-dark-0 bg-light-1 p-1 rounded no-underline">
+            <p class="mr-1 mb-0">{{$user->username}}</p>
+            <span class="flex w-[2rem] bg-light-2 p-1 rounded">
+                <img src="{{$image->arquivo_base64}}" width="100%" />
             </span>
         </a>
+
     </div>
 </nav>

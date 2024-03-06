@@ -30,7 +30,14 @@
             <div class="d-flex w-100 justify-content-between">
 
                 <div class="d-flex align-items-center gap-2">
-                    <x-checkbox name="remember_me"/>Lembre-se de mim
+                    <x-form.input 
+                        id="remember_me" 
+                        name="remember_me"
+                        label="Checkbox" 
+                        type="checkbox" 
+                        icon="lock-closed" 
+                        placeholder="Senha"
+                    />
                 </div>
 
                 <div>

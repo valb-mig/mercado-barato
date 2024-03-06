@@ -21,7 +21,9 @@
         'money'       => 'bx-money',
         'trash'       => 'heroicon-s-trash',
         'pencil'      => 'heroicon-s-pencil',
-        'camera'      => 'heroicon-s-camera'
+        'camera'      => 'heroicon-s-camera',
+        'home'        => 'heroicon-s-home',
+        'magnify'     => 'heroicon-o-magnifying-glass'
     ];
 @endphp
 

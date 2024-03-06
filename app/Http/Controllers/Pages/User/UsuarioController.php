@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Pages\User;
 
 use App\Http\Controllers\Config\Controller;
 use App\Models\{User, UserArquivos};
+use Illuminate\Support\Facades\Auth;
 
 class UsuarioController extends Controller
 {
@@ -12,6 +13,12 @@ class UsuarioController extends Controller
         if(!isset($id) || empty($id))
         {
             session()->flash('danger', 'Usuário não informado!');
+            return redirect()->route('home');
+        }
+
+        if(Auth::user()->id != $id)
+        {
+            session()->flash('danger', 'Você não tem permissão para acessar outros usuários');
             return redirect()->route('home');
         }
 

@@ -8,15 +8,8 @@
 @section('content')
 
     <div class="d-flex justify-content-between align-items-center">
-        <h1 class="d-flex align-items-center">
-            <div class="d-flex align-items-center gap-1">
-                @include('components.config.icon', [
-                    'icon'  => $setor->setor_icone,
-                    'width' => '80px'
-                ])
-                {{$setor->setor_nome}}
-            </div>
-        </h1>
+
+        <x-title.page-title icon="{{$setor->setor_icone}}" title="{{$setor->setor_nome}}" desc="Produtos inseridos no setor de {{$setor->setor_nome}}"/>
 
         <span class="bg-light-1 border-1 border-light-2 p-1 rounded">
             <small>
@@ -25,20 +18,20 @@
         </span>
     </div>
 
-    <div class="d-flex w-100 gap-2 m-2 text-center justify-content-start">
+    <div class="flex w-100 gap-2 my-2 text-center justify-content-start">
         <x-button.action id="add" type="success" onclick="$('#modal_add').fadeToggle()">
             @include('components.config.icon', [ 'icon'  => 'plus' ])
-        </x-button.action>
-        <x-button.action id="remove" type="danger" onclick="">
-            @include('components.config.icon', [ 'icon'  => 'trash' ])
-        </x-button.action>
-        <x-button.action id="edit" type="secondary" onclick="">
-            @include('components.config.icon', [ 'icon'  => 'pencil' ])
-        </x-button.action>
+        </x-button.action>  
+        <x-form.input 
+            id="search" 
+            type="text" 
+            icon="magnify" 
+            placeholder="Pesquisa"
+        />
     </div>
 
     <section>
-        <div class="flex w-full gap-2">
+        <div class="flex w-full h-full gap-2 p-2 border-1 border-light-1 rounded">
             @foreach ($produtos as $produto)
                 <a href="/produto/{{$produto->id}}" class="no-underline text-dark-0 relative bg-light-1 p-2 rounded border-1 border-light-2">
                     <div class="absolute top-0 right-0">
@@ -53,35 +46,35 @@
                         <div class="text-[2em]">
                             {{$produto->produto_nome}}
                         </div>
-                        <table class="flex">
-                            <tr>
-                                <td class="text-[0.9em] bg-light-2 p-1 rounded">
-                                    <span>
+                        <table class="flex border-collapse bg-light-0 p-2 rounded">
+                            <tr class="mb-4">
+                                <td class="text-center text-[0.9em] bg-light-1 p-1 rounded">
+                                    <span class="text-[1.2em]">
                                         <b>Preço</b>
                                     </span> 
                                 </td>
                                 <td>
-                                    R$ {{number_format($produto->produto_preco / 100, 2, ',', '.')}}
+                                    <small>R$ {{number_format($produto->produto_preco / 100, 2, ',', '.')}}</small>
                                 </td>
                             </tr>
-                            <tr>
-                                <td class="text-[0.9em] bg-light-2 p-1 rounded">
-                                    <span>
+                            <tr class="mb-4">
+                                <td class="text-center text-[0.9em] bg-light-1 p-1 rounded">
+                                    <span class="text-[1.2em]">
                                         <b>Lote</b>
                                     </span> 
                                 </td>
                                 <td>
-                                    #{{$produto->id_lote}}
+                                    <small>#{{$produto->id_lote}}</small>
                                 </td>
                             </tr>
-                            <tr>
-                                <td class="text-[0.9em] bg-light-2 p-1 rounded">
-                                    <span>
+                            <tr class="mb-4">
+                                <td class="text-center text-[0.9em] bg-light-1 p-1 rounded">
+                                    <span class="text-[1.2em]">
                                         <b>Val</b>
                                     </span>
                                 </td>
                                 <td>
-                                    {{\Carbon\Carbon::parse($produto->produto_validade)->format('d/m/Y')}}
+                                    <small>{{\Carbon\Carbon::parse($produto->produto_validade)->format('d/m/Y')}}</small>
                                 </td>
                             </tr>
                         </table>

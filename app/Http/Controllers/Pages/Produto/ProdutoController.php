@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Pages\Produto;
 
 use App\Http\Controllers\Config\Controller;
-use App\Models\{Setores, Produtos};
+use App\Models\{Produtos};
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -11,6 +11,23 @@ class ProdutoController extends Controller
 {
     public function index($id = null)
     {
+        if(!isset($id) || empty($id))
+        {
+            session()->flash('danger', 'Produto não informado!');
+            return back();
+        }
+
+        $produto = Produtos::where('id', $id)->first();
+
+        if(!$produto)
+        {
+            session()->flash('danger', 'Produto não encontrado!');
+            return back();
+        }
+
+        return view('pages.produto.index',[
+            'produto' => $produto,
+        ]);
     }
 
     public function add(Request $req, $id)
@@ -33,12 +50,12 @@ class ProdutoController extends Controller
             'lote.required'       => 'O campo de lote é obrigatório'
         ]);
 
-        $produto = $this->createProduto($id, $req);
+        $this->createProduto($id, $req);
 
         return redirect()->route('setor', ['id' => $id]);
     }
 
-    private function createProduto(int $id, object $req):object
+    private function createProduto(int $id, object $req):void
     {
         $produto = new Produtos;
 
@@ -55,7 +72,5 @@ class ProdutoController extends Controller
         $produto->created_at = now();
 
         $produto->save();
-
-        return $produto;
     }
 }
