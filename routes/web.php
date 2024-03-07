@@ -1,7 +1,5 @@
 <?php
 
-use App\Livewire\Counter;
-
 use Illuminate\Support\Facades\{Auth, Route};
 
 use App\Http\Controllers\Pages\Auth\{
@@ -15,8 +13,6 @@ use App\Http\Controllers\Pages\{
     Produto\ProdutoController,
     User\UsuarioController
 };
-
-Route::get('/counter', Counter::class);
 
 /*
 *  Root redirect
