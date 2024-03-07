@@ -6,8 +6,8 @@
 @endpush
 
 @section('content')
-    <section class="d-flex gap-3 flex-column w-100">
-        <h1 class="d-flex justify-content-center">Login</h1>
+    <section class="d-flex gap-3 flex-column w-full">
+        <h1 class="d-flex justify-center">Login</h1>
         <x-form.body action="/user/login">
             <x-form.input 
                 id="username" 
@@ -27,9 +27,9 @@
             />
             <hr>
 
-            <div class="d-flex w-100 justify-content-between">
+            <div class="d-flex w-full justify-content-between">
 
-                <div class="d-flex align-items-center gap-2">
+                <div class="d-flex items-center gap-2">
                     <x-form.input 
                         id="remember_me" 
                         name="remember_me"
@@ -46,7 +46,7 @@
                 </div>
             </div>
         </x-form.body>
-        <div class="container d-flex w-100 justify-end">
+        <div class="container d-flex w-full justify-end">
             <a href="/user/password">
                 Esqueci minha senha
             </a>

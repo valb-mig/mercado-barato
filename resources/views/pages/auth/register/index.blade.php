@@ -6,8 +6,8 @@
 @endpush
 
 @section('content')
-    <section class="d-flex gap-3 flex-column w-100">
-        <h1 class="d-flex justify-content-center">Registre-se</h1>
+    <section class="d-flex gap-3 flex-column w-full">
+        <h1 class="d-flex justify-center">Registre-se</h1>
         <x-form.body action="/user/register">
 
             <x-form.input 
@@ -54,7 +54,7 @@
             <hr>
             
             <div>
-                <div class="d-flex w-100 gap-2 text-center justify-content-end">
+                <div class="d-flex w-full gap-2 text-center justify-content-end">
                     <a href="/user/login" class="btn btn-default">Já possui uma conta?</a>
                     <button type="submit" class="btn btn-success">Registrar</button>
                 </div>
