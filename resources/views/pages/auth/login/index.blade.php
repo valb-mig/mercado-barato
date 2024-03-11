@@ -6,10 +6,12 @@
 @endpush
 
 @section('content')
-    <section class="d-flex gap-3 flex-column w-full">
-        <h1 class="d-flex justify-center">Login</h1>
+    <section class="flex gap-3 flex-col w-full">
+        <h1 class="flex justify-center text-[2rem]">
+            Login
+        </h1>
         <x-form.body action="/user/login">
-            <x-form.input 
+            <x-input.text 
                 id="username" 
                 label="Usuário" 
                 type="text" 
@@ -17,7 +19,7 @@
                 placeholder="Nome do usuário"
             />
 
-            <x-form.input 
+            <x-input.text
                 id="password" 
                 name="password"
                 label="Senha" 
@@ -27,33 +29,28 @@
             />
             <hr>
 
-            <div class="d-flex w-full justify-content-between">
+            <div class="flex w-full justify-between">
 
-                <div class="d-flex items-center gap-2">
-                    <x-form.input 
+                <div class="flex items-center gap-2">
+                    <x-input.checkbox 
                         id="remember_me" 
                         name="remember_me"
-                        label="Checkbox" 
+                        label="Lembre-se de mim" 
                         type="checkbox" 
-                        icon="lock-closed" 
                         placeholder="Senha"
                     />
                 </div>
 
-                <div>
-                    <a href="/user/register" class="btn btn-default">Registre-se</a>
-                    <button type="submit" class="btn btn-success">Login</button>
+                <div class="flex gap-2 items-center">
+                    <a href="/user/register">Registre-se</a>
+                    <x-button.text type="submit" style="success">Login</x-button.text>
                 </div>
             </div>
         </x-form.body>
-        <div class="container d-flex w-full justify-end">
+        <div class="flex w-full justify-end text-[.8rem]">
             <a href="/user/password">
                 Esqueci minha senha
             </a>
         </div>
     </section>
-@endsection
-
-@section('footer')
-    <x-config.layout.footer/>
 @endsection

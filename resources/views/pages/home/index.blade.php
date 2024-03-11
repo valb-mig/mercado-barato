@@ -6,7 +6,7 @@
 @endpush
 
 @section('header')
-    @include('components.config.layout.header')
+    @include('layouts.header')
 @endsection
 
 @section('content')

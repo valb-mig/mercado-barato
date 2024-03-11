@@ -2,7 +2,13 @@
 @section('title', 'Mercado Barato - User')
 
 @section('header')
-    @include('components.config.layout.header')
+    @include('layouts.header')
+    @include('layouts.breadcrumbs', [
+        'paths' => [
+            ['label' => 'Home', 'url' => '/home'],
+            ['label' => 'Perfil', 'url' => '/user/profile/' . $user->id]
+        ]
+    ])
 @endsection
 
 @section('content')

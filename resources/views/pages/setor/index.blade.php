@@ -2,7 +2,13 @@
 @section('title', 'Mercado Barato - Setor - '.$setor->setor_nome)
 
 @section('header')
-    @include('components.config.layout.header')
+    @include('layouts.header')
+    @include('layouts.breadcrumbs', [
+        'paths' => [
+            ['label' => 'Home', 'url' => '/home'],
+            ['label' => 'Setor', 'url' => '/setor/' . $setor->id]
+        ]
+    ])
 @endsection
 
 @section('content')
@@ -22,23 +28,22 @@
     
     <x-modal.form id="add" action="/setor/{{$setor->id}}/add" title="Adicionar produtos">
 
-        <x-form.input 
+        <x-input.file 
             id="foto" 
             label="Foto" 
             type="file" 
             icon="camera" 
-            placeholder="Foto do usuário (jpeg,png,jpg)"
+            placeholder="Foto do produto (jpeg,png,jpg)"
         />
 
-        <x-form.input 
+        <x-input.text 
             id="nome" 
             label="Produto" 
-            type="text" 
             icon="cart" 
             placeholder="Nome do produto"
         />
 
-        <x-form.input 
+        <x-input.text 
             id="quantidade" 
             label="Quantidade" 
             type="number" 
@@ -47,16 +52,30 @@
             class="number"
         />
 
-        <x-form.input 
-            id="preco" 
-            label="Preço" 
-            type="text" 
-            icon="money" 
-            placeholder="Preço do produto"
-            class="money"
-        />
+        <div class="flex gap-2">
+            <x-input.text 
+                id="preco" 
+                label="Preço" 
+                type="text" 
+                icon="money" 
+                placeholder="Preço do produto"
+                class="money"
+            />
 
-        <x-form.input 
+            <x-input.select 
+                id="medida" 
+                type="select" 
+                icon="info" 
+                placeholder="Medida"
+                :options="[
+                    'u' => 'Unidade',
+                    'k' => 'Kilo',
+                    'g' => 'Grama'
+                ]"
+            />
+        </div>
+
+        <x-input.text 
             id="validade" 
             label="Validade" 
             type="text" 
@@ -65,7 +84,7 @@
             class="date"
         />
 
-        <x-form.input 
+        <x-input.text 
             id="lote" 
             label="Lote" 
             type="number" 
