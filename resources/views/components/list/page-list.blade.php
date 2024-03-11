@@ -1,6 +1,6 @@
 @props(['header','body','items'])
 
-<div class="d-flex flex-column w-full table-responsive rounded">
+<div class="flex flex-column w-full table-responsive rounded">
     <table class="border border-light-1">
         <thead class="bg-light-1">
             <tr>

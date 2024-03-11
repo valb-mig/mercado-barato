@@ -1,13 +1,13 @@
-@props(['type', 'title', 'icon', 'onclick'])
+@props(['type', 'style', 'icon', 'onclick'])
 
 @php
     $styleType = "hover:bg-light-2 hover:border-light-3 border-[1px]";
 
-    if(isset($type) && !empty($type))
+    if(isset($style) && !empty($style))
     {
-        switch ($type) {
-            case 'submit':
-                $styleType = "hover:bg-light-2 hover:border-light-3 border-[1px]";
+        switch ($style) {
+            case 'success':
+                $styleType = "text-light-0 bg-green-0 border border-green-1 hover:bg-green-1 hover:border-green-0 border-[1px]";
                 break;
             default:
                 break;
@@ -25,5 +25,5 @@
 >
     @if (isset($icon) && !empty($icon))
     @endif
-    {{$title}}
+    {{$slot}}
 </button>

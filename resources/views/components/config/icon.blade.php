@@ -22,7 +22,8 @@
         'pencil'      => 'heroicon-s-pencil',
         'camera'      => 'heroicon-s-camera',
         'home'        => 'heroicon-s-home',
-        'magnify'     => 'heroicon-o-magnifying-glass'
+        'magnify'     => 'heroicon-o-magnifying-glass',
+        'info'        => 'carbon-information-filled',
     ];
 @endphp
 

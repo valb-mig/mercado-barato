@@ -1,20 +1,15 @@
-@props(['id', 'onclick', 'class', 'type'])
+@props(['id', 'onclick', 'class', 'style', 'type', 'action'])
 
 @php
-    $styleClass = "w-[40px] h-[40px]";
+    $styleClass = $class ?? "";
 
-    if(isset($class) && !empty($class))
+    $styleType = "text-dark-0 bg-light-0 border border-light-1 hover:bg-light-2 hover:border-light-3";
+
+    if(isset($style) && !empty($style))
     {
-        $styleClass = $class;
-    }
-
-    $styleType = "hover:bg-light-2 hover:border-light-3 border-[1px]";
-
-    if(isset($type) && !empty($type))
-    {
-        switch ($type) {
-            case 'primary':
-                $styleType = "hover:bg-light-2 hover:border-light-3 border-[1px]";
+        switch ($style) {
+            case 'success':
+                $styleType = "text-light-0 bg-green-0 border-green-1 hover:bg-light-2 hover:border-light-3 border-[1px]";
                 break;
             case 'secondary':
                 $styleType = "hover:text-white hover:bg-blue-0 hover:border-blue-1 border-[1px]";
@@ -35,9 +30,16 @@
 @endphp
 
 <button 
-    id="{{$id}}" 
-    onclick="{{$onclick}}" 
-    class="flex justify-center items-center rounded transition-all bg-light-0 border-light-1 {{$styleType}} {{$styleClass}}"
+    @isset($id)
+        id="{{$id}}" 
+    @endisset
+    @isset($onclick)
+        onclick="{{$onclick}}" 
+    @endisset
+    @isset($type)
+        type="{{$type}}" 
+    @endisset
+    class="flex justify-center items-center p-2 rounded transition-all bg-light-0 border-light-1 {{$styleType}} {{$styleClass}}"
 >
-    {{$slot}}
+    {{ $slot }}
 </button>

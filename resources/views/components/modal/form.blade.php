@@ -11,9 +11,6 @@
                     ])
                     {{$title}}
                 </span>
-                <button class="btn btn-default" onclick="$('#modal_add').fadeOut()">
-                    <i class="fa fa-times"></i>
-                </button>
             </div>
             <form action="{{$action}}" method="post" class="flex flex-col gap-2 p-2" enctype="multipart/form-data">
                 @csrf
@@ -24,16 +21,21 @@
                 <hr>
 
                 <div id="modal_footer" class="flex justify-end gap-2">
+                    
+                    <x-button.text
+                        type="button"
+                        onclick="$('#modal_{{$id}}').fadeToggle()"
+                    >
+                        Cancelar
+                    </x-button.text>
 
                     <x-button.text
-                        title="Cancelar"
-                        type="button"
-                        onclick="$('#modal_add').fadeToggle()"
-                    />
-                    <x-button.text
-                        title="Enviar"
                         type="submit"
-                    />
+                        style="success"
+                    >
+                        Enviar
+                    </x-button.text>
+
                 </div>
             </form>
         </div>
