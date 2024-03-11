@@ -32,10 +32,7 @@ export default {
           '0': '#6CC066',
           '1': '#61B668'
         }
-      },
-      justifyContent: {
-        'between': 'justify-content-between',
-      },
+      }
     },
   },
   plugins: [],

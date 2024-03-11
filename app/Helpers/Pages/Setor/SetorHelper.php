@@ -55,7 +55,7 @@ class SetorHelper
             $validade = now() > $produto->produto_validade ?  'text-light-0 bg-red-500' : 'bg-light-0';
 
             $listProdutos['body'][$key]['validade'] = [
-                'class' => 'd-flex justify-content-center',
+                'class' => 'd-flex justify-center',
                 'data'  => "<div class='d-flex p-2'><p class='m-0 p-1 $validade rounded'>".date('d/m/Y', strtotime($produto->produto_validade))."</p></div>"
             ];
         }

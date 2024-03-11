@@ -2,12 +2,21 @@
 @section('title', 'Mercado Barato - User')
 
 @section('header')
-    @include('components.config.layout.header')
+    @include('layouts.header')
+    @include('layouts.breadcrumbs', [
+        'paths' => [
+            ['label' => 'Home', 'url' => '/home'],
+            ['label' => 'Perfil', 'url' => '/user/profile/' . $user->id]
+        ]
+    ])
 @endsection
 
 @section('content')
+
+    <x-title.page-title icon="user" title="Perfil" desc="Configure / Atualize os dados do seu perfil!"/>
+
     <div class="flex w-full justify-center">
-        <section class="flex felx-col border-1 border-light-1 p-2 rounded">
+        <section class="flex felx-col border border-light-1 p-2 rounded">
             <header>
             </header>
             <main>

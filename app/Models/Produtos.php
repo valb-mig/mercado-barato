@@ -21,6 +21,7 @@ class Produtos extends Model
         'produto_desconto',
         'produto_base64',
         'produto_qtd',
-        'produto_validade'
+        'produto_validade',
+        'produto_medida'
     ];
 }

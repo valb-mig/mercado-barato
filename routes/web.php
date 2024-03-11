@@ -51,6 +51,22 @@ Route::middleware('auth.check')->group(function () {
     Route::post('/setor/{id?}/add', [ 
         ProdutoController::class, 'add'
     ]);
+
+    /*
+    *  Produto
+    */
+
+    Route::get('/produto/{id?}', [ 
+        ProdutoController::class, 'index'
+    ])->name('produto');
+
+    Route::post('/produto/{id?}/edit', [ 
+        ProdutoController::class, 'edit'
+    ]);
+
+    Route::post('/produto/remove', [ 
+        ProdutoController::class, 'remove'
+    ]);
 });
 
 /*

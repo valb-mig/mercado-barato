@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Pages\Setor;
 
 use App\Http\Controllers\Config\Controller;
 use App\Models\{Setores, Produtos};
-use App\Helpers\Pages\Setor\SetorHelper;
 
 class SetorController extends Controller
 {

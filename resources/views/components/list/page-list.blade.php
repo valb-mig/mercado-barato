@@ -1,7 +1,7 @@
 @props(['header','body','items'])
 
-<div class="d-flex flex-column w-100 table-responsive rounded">
-    <table class="border-1 border-light-1">
+<div class="flex flex-column w-full table-responsive rounded">
+    <table class="border border-light-1">
         <thead class="bg-light-1">
             <tr>
                 @foreach ($header as $value)

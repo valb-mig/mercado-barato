@@ -1,35 +1,41 @@
 @props(['id', 'action', 'title'])
 
-<div id="modal_{{$id}}" class="modal bg-[#00000055]">
-    <div class="modal-dialog-centered d-flex justify-content-center">
-        <div class="bg-light-0 border-2 border-light-1 rounded">
-            <div id="modal_header" class="d-flex p-1 align-items-center justify-content-between w-100 bg-light-1">
-                <span id="title" class="d-flex gap-2">
+<div id="modal_{{$id}}" class="fixed inset-0 z-50 items-center justify-center hidden bg-black bg-opacity-50 backdrop-blur-[4px]">
+    <div class="flex h-full justify-center items-center">
+        <div class="bg-white border-2 border-gray-300 rounded">
+            <div id="modal_header" class="flex items-center justify-between w-full bg-gray-100 p-2">
+                <span id="title" class="flex items-center space-x-2">
                     @include('components.config.icon', [
                         'icon'  => "user",
                         'width' => "20px"
                     ])
                     {{$title}}
                 </span>
-                <button class="btn btn-default" onclick="$('#modal_add').fadeOut()">
-                    <i class="fa fa-times"></i>
-                </button>
             </div>
-            <form action="{{$action}}" method="post" class="d-flex flex-column gap-2 p-2" enctype="multipart/form-data">
+            <form action="{{$action}}" method="post" class="flex flex-col gap-2 p-2" enctype="multipart/form-data">
                 @csrf
-                <div id="modal_body" class="d-flex flex-column gap-2">
+                <div id="modal_body" class="flex flex-col gap-2">
                     {{$slot}}
                 </div>
 
                 <hr>
 
-                <div id="modal_footer" class="d-flex justify-content-end gap-2">
-                    <button class="btn btn-default" type="button" onclick="$('#modal_add').fadeToggle()">
-                        <i></i>Cancelar
-                    </button>
-                    <button class="btn btn-success" type="submit">
-                        <i></i>Enviar
-                    </button>
+                <div id="modal_footer" class="flex justify-end gap-2">
+                    
+                    <x-button.text
+                        type="button"
+                        onclick="$('#modal_{{$id}}').fadeToggle()"
+                    >
+                        Cancelar
+                    </x-button.text>
+
+                    <x-button.text
+                        type="submit"
+                        style="success"
+                    >
+                        Enviar
+                    </x-button.text>
+
                 </div>
             </form>
         </div>

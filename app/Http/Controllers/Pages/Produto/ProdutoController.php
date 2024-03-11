@@ -3,14 +3,33 @@
 namespace App\Http\Controllers\Pages\Produto;
 
 use App\Http\Controllers\Config\Controller;
-use App\Models\{Setores, Produtos};
 use Illuminate\Http\Request;
-use Carbon\Carbon;
+use App\Models\Produtos;
+use App\Helpers\Pages\Produto\ProdutoHelper;
 
 class ProdutoController extends Controller
 {
+    private $medidas = ['u', 'k', 'g'];
+
     public function index($id = null)
     {
+        if(!isset($id) || empty($id))
+        {
+            session()->flash('danger', 'Produto não informado!');
+            return back();
+        }
+
+        $produto = Produtos::where('id', $id)->first();
+
+        if(!$produto)
+        {
+            session()->flash('danger', 'Produto não encontrado!');
+            return back();
+        }
+
+        return view('pages.produto.index',[
+            'produto' => $produto,
+        ]);
     }
 
     public function add(Request $req, $id)
@@ -21,41 +40,55 @@ class ProdutoController extends Controller
             'quantidade' => 'required',
             'validade'   => 'required',
             'lote'       => 'required',
-            'preco'      => 'required'
+            'preco'      => 'required',
+            'medida'     => 'required'
         ],[
-            'foto.required'          => 'O campo de foto é obrigatório',
-            'foto.max'               => 'Arquivo com tamanho alem do limite (10mb)',
-            'foto.file'              => 'Tipo do arquivo não permitido (jpeg,png,jpg)',
+            'foto.required'       => 'O campo de foto é obrigatório',
+            'foto.max'            => 'Arquivo com tamanho alem do limite (10mb)',
+            'foto.file'           => 'Tipo do arquivo não permitido (jpeg,png,jpg)',
             'nome.required'       => 'O campo de nome é obrigatório',
             'quantidade.required' => 'O campo de quantidade é obrigatório',
             'validade.required'   => 'O campo de validade é obrigatório',
             'preco.required'      => 'O campo de preço é obrigatório',
-            'lote.required'       => 'O campo de lote é obrigatório'
+            'lote.required'       => 'O campo de lote é obrigatório',
+            'medida.required'     => 'O campo de medida é obrigatório'
         ]);
 
-        $produto = $this->createProduto($id, $req);
+        if(!in_array($req->input('medida'), $this->medidas))
+        {
+            session()->flash('danger', 'Medida inválida!');
+            return redirect()->route('setor', ['id' => $id]);
+        }
+
+        ProdutoHelper::createProduto($id, $req);
 
         return redirect()->route('setor', ['id' => $id]);
     }
 
-    private function createProduto(int $id, object $req):object
+    public function edit(Request $req, $id)
     {
-        $produto = new Produtos;
+        if(!in_array($req->input('medida'), $this->medidas))
+        {
+            session()->flash('danger', 'Medida inválida!');
+            return redirect()->route('produto', ['id' => $id]);
+        }
 
-        $produto->id_setor         = $id;
-        $produto->id_lote          = $req->input('lote');
-        $produto->produto_nome     = $req->input('nome');
-        $produto->produto_preco    = floatval(str_replace('R$','', str_replace('.','', str_replace(',','.', $req->input('preco')))));
-        $produto->produto_base64   = 'data:image/png;base64,'.base64_encode(file_get_contents($req->file('foto')->getPathname()));
-        $produto->produto_desconto = 0;
-        $produto->produto_qtd      = $req->input('quantidade');
-        $produto->produto_validade = Carbon::createFromFormat('d/m/Y', $req->input('validade'))->format('Y-m-d');
+        ProdutoHelper::editProduto($id, $req);
 
-        $produto->updated_at = now();
-        $produto->created_at = now();
+        return redirect()->route('produto', ['id' => $id]);
+    }
 
-        $produto->save();
+    public function remove(Request $req) 
+    {
+        $req->validate([ 
+            'id_produto' => 'required',
+            'id_setor'   => 'required',
+        ]);
 
-        return $produto;
+        ProdutoHelper::removeProduto($req->input('id_produto'));
+
+        return redirect()->route('setor', [
+            'id' =>  $req->input('id_setor')
+        ]);
     }
 }
