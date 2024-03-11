@@ -59,6 +59,14 @@ Route::middleware('auth.check')->group(function () {
     Route::get('/produto/{id?}', [ 
         ProdutoController::class, 'index'
     ])->name('produto');
+
+    Route::post('/produto/{id?}/edit', [ 
+        ProdutoController::class, 'edit'
+    ]);
+
+    Route::post('/produto/remove', [ 
+        ProdutoController::class, 'remove'
+    ]);
 });
 
 /*
