@@ -3,6 +3,9 @@
 
 @section('header')
     @include('layouts.header')
+@endsection
+
+@section('breadcrumbs')
     @include('layouts.breadcrumbs', [
         'paths' => [
             ['label' => 'Home', 'url' => '/home'],
@@ -52,7 +55,7 @@
                             </tr>
                             <tr>
                                 <td><strong>Setor:</strong></td>
-                                <td><small>{{$produto->id_setor}}</small></td>
+                                <td><small>{{$produto->setor_nome}}</small></td>
                             </tr>
                             <tr>
                                 <td><strong>Preço:</strong></td>

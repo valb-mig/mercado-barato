@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Pages\Home;
 
 use App\Http\Controllers\Config\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Models\{Setores, Produtos};
+use App\Models\{
+    Setores, 
+    Produtos
+};
 
 class HomeController extends Controller
 {
@@ -30,8 +33,9 @@ class HomeController extends Controller
         }
 
         return view('pages.home.index',[
-            'user'    => Auth::user(),
-            'setores' => $setores
+            'user'     => Auth::user(),
+            'setores'  => $setores,
+            'produtos' => Produtos::all()
         ]);
     }
 }

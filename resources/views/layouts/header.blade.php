@@ -4,6 +4,11 @@
 @endphp
 
 <nav class="p-2 flex gap-2 items-center border-b-[1px] border-light-1">
+
+    <x-button.action onclick="$('#sidebar').toggle()">
+        <i class="fa fa-solid fa-bars"></i>
+    </x-button.action>
+    
     <div class="flex w-full">
         <a class="navbar-brand" href="/home">Mercado Barato</a>
     </div>

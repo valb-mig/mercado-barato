@@ -3,6 +3,9 @@
 
 @section('header')
     @include('layouts.header')
+@endsection
+
+@section('breadcrumbs')
     @include('layouts.breadcrumbs', [
         'paths' => [
             ['label' => 'Home', 'url' => '/home'],

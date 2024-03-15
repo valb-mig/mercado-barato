@@ -3,6 +3,9 @@
 
 @section('header')
     @include('layouts.header')
+@endsection
+
+@section('breadcrumbs')
     @include('layouts.breadcrumbs', [
         'paths' => [
             ['label' => 'Home', 'url' => '/home'],
@@ -12,7 +15,6 @@
 @endsection
 
 @section('content')
-
     <div class="flex justify-between items-center">
 
         <x-title.page-title icon="{{$setor->setor_icone}}" title="{{$setor->setor_nome}}" desc="Produtos inseridos no setor de {{$setor->setor_nome}}"/>

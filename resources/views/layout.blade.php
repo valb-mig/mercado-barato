@@ -34,21 +34,48 @@
         <!-- Golbal Style -->
         <link rel="stylesheet" href="{{ asset('css/globals.css') }}">
 
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
         <!-- Styles -->
         @stack('styles')
 
     </head>
 
-    <body class="bg-light-0">
+    <body class="flex flex-col h-screen bg-light-0">
         @yield('header')
-        <main>
-            {{-- @include('components.alert.message') --}}
+        <main class="flex h-full w-full">
 
-            @yield('sidebar')
-
-            <section class="px-2">
-                @yield('content')
+            <section id="sidebar" class="flex flex-col p-2 justify-center bg-light-0 border-r border-light-1 text-dark-0">
+                <div class="flex flex-col justify-between h-full">
+                    <ul>
+                        <li>
+                            <a href="/home" class="flex gap-2 text-dark-0 items-center p-2 rounded hover:bg-light-0">
+                                <span class="flex justify-center items-center rounded border border-light-2 w-[2rem] h-[2rem]">
+                                    <i class="fa fa-home"></i>
+                                </span>
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/logs" class="flex gap-2 text-dark-0 items-center p-2 rounded hover:bg-light-0">
+                                <span class="flex justify-center items-center rounded border border-light-2 w-[2rem] h-[2rem]">
+                                    <i class="fa-solid fa-hashtag"></i>
+                                </span>
+                                Movimentações
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </section>
+
+            <div class="flex flex-col w-full">
+                @yield('breadcrumbs')
+
+                <section class="px-2 w-full">
+                    @yield('content')
+                </section>
+            </div>
         </main>
         @yield('footer')
     </body>

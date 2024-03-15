@@ -1,6 +1,6 @@
 @props(['paths'])
 
-<nav aria-label="breadcrumb" class="border-b border-light-1 mb-2 p-1 text-sm">
+<nav aria-label="breadcrumb" class="border-b border-light-1 mb-2 text-sm">
     <ol class="breadcrumb flex ">
         @foreach ($paths as $path)
             <span class="text-light-1">/</span>
