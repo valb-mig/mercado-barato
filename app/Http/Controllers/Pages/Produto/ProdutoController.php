@@ -18,8 +18,8 @@ class ProdutoController extends Controller
             session()->flash('danger', 'Produto não informado!');
             return back();
         }
-
-        $produto = Produtos::where('id', $id)->first();
+        
+        $produto = ProdutoHelper::getDadosProduto($id);
 
         if(!$produto)
         {
